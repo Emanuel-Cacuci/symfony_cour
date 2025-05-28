@@ -24,6 +24,9 @@ class Produit
     #[ORM\ManyToOne(inversedBy: 'user')]
     private ?Category $category = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $images = null;
+
     // getter et setter
 
     public function getId(): ?int
@@ -51,6 +54,18 @@ class Produit
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getImages(): ?string
+    {
+        return $this->images;
+    }
+
+    public function setImages(string $images): static
+    {
+        $this->images = $images;
 
         return $this;
     }
