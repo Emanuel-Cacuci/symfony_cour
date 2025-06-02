@@ -3,8 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 body {
-    background-color: rgb(81, 79, 77);
-    color: white;
+    background-color: rgb(172, 167, 167);
+    color: rgb(3, 3, 3);
 }
 
 
@@ -21,4 +21,10 @@ body {
     background-color: rgb(194, 140, 140);
     border-radius: 20px;
     margin: 5px;
+}
+.card{
+    background-color: rgb(57, 123, 134);
+    display: flex;
+    justify-content: space-around;
+    border: solid orange;
 }

@@ -68,6 +68,8 @@ final class AdminProduitController extends AbstractController
  
             $entityManager->persist($produit);
             $entityManager->flush();
+
+             $this->addFlash('success', "Le produit à bien été ajouté");
  
             return $this->redirectToRoute('app_admin_produit_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -120,6 +122,8 @@ final class AdminProduitController extends AbstractController
             }
  
             $entityManager->flush();
+
+            $this->addFlash('success', "Le produit à bien ête modifie");
  
             return $this->redirectToRoute('app_admin_produit_index', [], Response::HTTP_SEE_OTHER);
         }

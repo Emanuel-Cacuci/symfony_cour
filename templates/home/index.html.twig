@@ -52,6 +52,37 @@
 	{% endif %}
 
 
+
+	<div>
+	<h3 class="text-3xl>
+	fonction find()
+	</h3>
+
+	<div>
+
+	{# <p> nom du produit : {{ oneProduit.nom}}</p> #}
+
+	</div>
+
+
+{% for produit in produits %}
+<div>
+<div class="card">
+{{ produit.nom}}
+{# {{ produit.category.id}} #}
+{{ produit.category.name}}
+<img class=" w-96 " src=" {{ asset('images/produit_image/' ~ produit.images)}}"  alt="">
+<a href="{{ path('app_admin_produit_show', {'id': produit.id})}}">show</a>
+<a href="{{ path('app_admin_produit_edit', {'id': produit.id})}}">edit</a>
+</div>
+</div>
+
+{% else %}
+
+<p colspan="3">no records found</p>
+{% endfor %}
+
+
 {% endblock %}
 
 
@@ -60,4 +91,68 @@
 	{{parent()}}
 
 	<meta name="description" content="page home">
+
+
+
+
+
+
+<div class="border m-auto text-center flex flex-col gap-20">
+<h3 class="text-2xl">Exemple de form pour la méthode find()</h3>
+ 
+	<form action="{{ path('home') }}" method="POST" data-turbo="false">
+<input type="hidden" name="form" value="select_produit">
+<select name="produit" id="produit">
+
+			{% if produits %}
+
+				{% for produit in produits %}
+<option value="{{ produit.id }}">{{ produit.nom }}</option>
+
+				{% endfor %}
+
+			{% endif %}
+</select>
+<button class="btn btn-primary" type="submit">Rechercher</button>
+</form>
+
+		{% if selectedProduit %}
+<div class="card">
+<h2>Produit sélectionné :</h2>
+<ul>
+<li>
+<strong>Nom :</strong>
+
+						{{ selectedProduit.nom }}</li>
+<li>
+<strong>Description :</strong>
+
+						{{ selectedProduit.description }}</li>
+<li>
+<strong>Prix :</strong>
+
+						{{ selectedProduit.prix }}
+
+						€</li>
+<li>
+<strong>Stock :</strong>
+
+						{{ selectedProduit.stock }}</li>
+<li>
+<strong>Catégorie :</strong>
+
+						{{ selectedProduit.category.name }}</li>
+</ul>
+ 
+				<div>
+<img src="{{ asset('images/' ~ selectedProduit.img) }}" alt="{{ selectedProduit.nom }}" style="width: 200px;">
+</div>
+</div>
+
+		{% endif %}
+
+ 
+</div>
+ 
+
 {% endblock %}

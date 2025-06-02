@@ -34,6 +34,7 @@
           <a class="nav-link" href=" {{ path('login') }}  ">connection</a>
           <a class="nav-link" href=" {{ path('inscription') }}  ">inscription</a>
           
+          
         {% endif %}
 
 
@@ -46,6 +47,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{{ path('app_admin_category_index')}}">Category</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_admin_produit_index')}}">Produits</a></li>
             {#<li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
