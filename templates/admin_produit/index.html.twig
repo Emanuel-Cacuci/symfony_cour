@@ -10,7 +10,10 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>actions</th>
+                <th>Stock</th>
+                <th>Prix</th>
+                <th>Actions</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -18,10 +21,16 @@
             <tr>
                 <td>{{ produit.id }}</td>
                 <td>{{ produit.nom }}</td>
+                <td>{{ produit.stock}}</td>
+                <td>{{ produit.prix}}</td>
+                
+                {# <td>{{ produit.actions}}</td> #}
+                
                 <td>
                     <a href="{{ path('app_admin_produit_show', {'id': produit.id}) }}">show</a>
                     <a href="{{ path('app_admin_produit_edit', {'id': produit.id}) }}">edit</a>
                 </td>
+                
             </tr>
         {% else %}
             <tr>

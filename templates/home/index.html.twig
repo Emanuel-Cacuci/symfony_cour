@@ -37,7 +37,7 @@
 	{% if app.user %}
 
 
-		<h2 class="text-2xl ">
+		<h2 class="text-2xl">
 			Bonjour
 			{{ app.user.username}}
 		</h2>
@@ -54,11 +54,11 @@
 
 
 	<div>
-	<h3 class="text-3xl>
+	<h3 class="text-3xl">
 	fonction find()
 	</h3>
 
-	<div>
+	{# <div> #}
 
 	{# <p> nom du produit : {{ oneProduit.nom}}</p> #}
 
@@ -72,14 +72,64 @@
 {# {{ produit.category.id}} #}
 {{ produit.category.name}}
 <img class=" w-96 " src=" {{ asset('images/produit_image/' ~ produit.images)}}"  alt="">
-<a href="{{ path('app_admin_produit_show', {'id': produit.id})}}">show</a>
-<a href="{{ path('app_admin_produit_edit', {'id': produit.id})}}">edit</a>
+
+
+{# <a href="{{ path('app_admin_produit_show', {'id': produit.id})}}">show</a>
+<a href="{{ path('app_admin_produit_edit', {'id': produit.id})}}">edit</a> #}
+
+
 </div>
 </div>
+
+{% if produit.stock < 3 and produit.stock >0 %}
+<p>
+<strong class="text-red-500">Commander votre produit</strong>
+stock: {{ produit.stock}}
+</p>
+{% elseif produit.stock > 3 %}
+<p>	
+<strong> 
+    Stock:  
+</strong>
+{{ produit.stock}}
+</p>
+{% elseif produit.stock is same as 0 %}
+<p>
+<strong class="text-red-500">Produit populaire
+</strong>
+</p>
+{% endif %}
+
+<form action=" {{ path('panier_ajouter', { id : produit.id})}}" method="GET">
+<label for="" >Quantité: </label>
+<input type="numbber" 
+       name="quantite" 
+	   id=" quantite_{{produit.id}}"
+	   value="0"
+	   min="1"
+	   max="{{ produit.stock}}"
+	   class="w-16 border p-1">
+
+	   <button type=s class="btn btn-succes">Ajouter au panier</button>
+</form>
+
 
 {% else %}
 
 <p colspan="3">no records found</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endfor %}
 
 
@@ -91,6 +141,9 @@
 	{{parent()}}
 
 	<meta name="description" content="page home">
+
+
+
 
 
 
@@ -116,7 +169,7 @@
 <button class="btn btn-primary" type="submit">Rechercher</button>
 </form>
 
-		{% if selectedProduit %}
+		{% if selectedProduit is defined and selectedProduit %}
 <div class="card">
 <h2>Produit sélectionné :</h2>
 <ul>

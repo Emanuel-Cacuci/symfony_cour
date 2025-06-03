@@ -25,6 +25,8 @@ class ProduitForm extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'id',
             ])
+            ->add('stock')
+            ->add('prix')
         ;
     }
 
