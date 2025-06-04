@@ -21,7 +21,16 @@
 </p>
 <p> {{ panier.quantity }} x {{ panier.produit.prix }} = {{ panier.quantity * panier.produit.prix }}</p>
 
+
 <div>
+
+<form action="{{ path('panier_retirer', {id: panier.id}) }}" method="post" class="d-inline">
+<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Supprimer ce produit du panier ?')">
+Retirer    🗑️ Supprimer
+</button>
+</form>
+
+
 <a href="">
 <button class="btn btn-warning">Retirer</button>
 </a>

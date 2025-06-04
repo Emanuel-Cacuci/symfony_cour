@@ -45,8 +45,6 @@ dump($produitRepository->findAll());
     }
 
 
-
-
     return $this->render('home/index.html.twig', [
           "produit" =>$produit,
           "oneProduit" =>$oneProduit,
@@ -66,4 +64,13 @@ dump($produitRepository->findAll());
   
 
  
+
+
+#[Route('/exo', name: 'exo')]
+public function exo(): Response
+{
+    return $this->render('exo/index.html.twig');
+}
+
+
 }
